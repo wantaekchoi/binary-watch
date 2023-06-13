@@ -1,0 +1,49 @@
+body {
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+}
+
+#binary-watch {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.time-unit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.caption {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.toggle-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-button {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background-color: black;
+  border: 0.2rem solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1rem 0.2rem rgba(255, 255, 255, 0.7),
+    0 0 0.5rem rgba(255, 255, 255, 0.7) inset;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.toggle-button.on {
+  background-color: white;
+  box-shadow: 0 0 1rem 0.3rem rgba(255, 255, 255, 0.9),
+    0 0 0.9rem rgba(255, 255, 255, 0.9) inset;
+}
+
+.label {
+  text-align: center;
+  text-shadow: 0 0 0.3rem rgba(255, 255, 255, 0.7);
+}
