@@ -24,11 +24,13 @@ main {
 }
 
 #button-section {
+  display: flex;
+  flex-direction: column;
   margin-top: 1em;
 }
 
 .caption {
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: bold;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -67,7 +69,11 @@ body.dark .toggle-button.off {
 }
 
 .label {
-  font-size: 0.75em;
+  font-size: 0.6em;
   text-align: center;
   margin: 0 auto;
+}
+
+.hidden {
+  display: none;
 }
