@@ -1,3 +1,25 @@
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.body.classList.add('dark');
+  }
+});
+
+const themeSwitchButton = document.createElement('button');
+updateThemeButtonText();
+themeSwitchButton.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  updateThemeButtonText();
+});
+document.body.appendChild(themeSwitchButton);
+
+function updateThemeButtonText() {
+  if (document.body.classList.contains('dark')) {
+    themeSwitchButton.textContent = '🌞';
+  } else {
+    themeSwitchButton.textContent = '🌛';
+  }
+}
+
 class ToggleButton extends HTMLElement {
   connectedCallback() {
     this.classList.add('off');
@@ -42,6 +64,9 @@ class TimeUnit extends HTMLElement {
   }
 
   createButtons() {
+    const buttons = document.createElement('div');
+    buttons.classList.add('button-container');
+
     for (let i = 0; i < 6; i++) {
       const buttonContainer = document.createElement('div');
       buttonContainer.classList.add('toggle-button-container');
@@ -55,13 +80,16 @@ class TimeUnit extends HTMLElement {
       label.textContent = `${1 << (5 - i)}`;
       buttonContainer.appendChild(label);
 
-      this.appendChild(buttonContainer);
+      buttons.appendChild(buttonContainer);
     }
+
+    this.appendChild(buttons);
   }
 
   update(value) {
-    for (let i = 1; i <= 6; i++) {
-      this.children[i].children[0].on = ((value >> (6 - i)) & 1) === 1;
+    const buttons = this.querySelector('.button-container');
+    for (let i = 0; i < 6; i++) {
+      buttons.children[i].children[0].on = ((value >> (5 - i)) & 1) === 1;
     }
   }
 }

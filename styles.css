@@ -1,49 +1,100 @@
 body {
-  background-color: black;
-  color: white;
-  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
 }
 
-#binary-watch {
+body.dark {
+  background-color: #1a1a1a;
+  color: #f2f2f2;
+}
+
+binary-watch {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  height: 80%;
+  background-color: #ebebeb;
+  border-radius: 8px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.time-unit {
+body.dark binary-watch {
+  background-color: #333333;
+  color: #f2f2f2;
+}
+
+time-unit {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .caption {
-  text-align: left;
-  margin-bottom: 1rem;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
 .toggle-button-container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .toggle-button {
-  width: 2em;
-  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
   border-radius: 50%;
-  background-color: black;
-  border: 0.2rem solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 1rem 0.2rem rgba(255, 255, 255, 0.7),
-    0 0 0.5rem rgba(255, 255, 255, 0.7) inset;
-  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+  background-color: #d3d3d3;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .toggle-button.on {
-  background-color: white;
-  box-shadow: 0 0 1rem 0.3rem rgba(255, 255, 255, 0.9),
-    0 0 0.9rem rgba(255, 255, 255, 0.9) inset;
+  background-color: #007bff;
+}
+
+.toggle-button.off {
+  background-color: #d3d3d3;
+}
+
+body.dark .toggle-button.on {
+  background-color: #007bff;
+}
+
+body.dark .toggle-button.off {
+  background-color: #666666;
 }
 
 .label {
+  font-size: 0.75em;
   text-align: center;
-  text-shadow: 0 0 0.3rem rgba(255, 255, 255, 0.7);
 }
