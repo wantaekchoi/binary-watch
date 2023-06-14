@@ -1,17 +1,17 @@
 class TimeUnit extends HTMLElement {
   connectedCallback() {
-    this.createCaption();
-    this.createButtons();
+    this.renderCaption();
+    this.renderButtons();
   }
 
-  createCaption() {
+  renderCaption() {
     const caption = document.createElement('div');
     caption.classList.add('caption');
     caption.textContent = this.getAttribute('name');
     this.appendChild(caption);
   }
 
-  createButtons() {
+  renderButtons() {
     const buttons = document.createElement('div');
     buttons.classList.add('button-container');
 
@@ -52,12 +52,7 @@ class BinaryWatch extends HTMLElement {
   }
 
   connectedCallback() {
-    this.timeUnits.forEach(unit => {
-      const timeUnit = document.createElement('time-unit');
-      timeUnit.setAttribute('name', unit);
-      this.appendChild(timeUnit);
-    });
-
+    this.renderTimeUnits();
     this.hours = this.children[0];
     this.minutes = this.children[1];
     this.seconds = this.children[2];
@@ -66,6 +61,14 @@ class BinaryWatch extends HTMLElement {
     setTimeout(() => {
       this.updateClock();
     }, 100);
+  }
+
+  renderTimeUnits() {
+    this.timeUnits.forEach(unit => {
+      const timeUnit = document.createElement('time-unit');
+      timeUnit.setAttribute('name', unit);
+      this.appendChild(timeUnit);
+    });
   }
 
   updateClock() {

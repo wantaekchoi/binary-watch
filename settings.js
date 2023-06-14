@@ -13,21 +13,14 @@ function initialize() {
 }
 
 function initializeTheme(button) {
-  const prefersDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialIsDark = isDarkTheme();
-
-  if (prefersDarkTheme) {
-    setTheme(button, true);
-  } else {
-    setTheme(button, false);
-  }
-
-  updateThemeButtonText(button, initialIsDark);
+  const prefersDarkTheme = isPrefersDarkTheme();
+  setTheme(prefersDarkTheme);
+  updateThemeButtonText(button, isDarkTheme());
 }
 
 function toggleTheme() {
   const themeSwitchButton = document.getElementById('themeSwitchButton');
-  const isDark = document.body.classList.toggle('dark');
+  const isDark = toggleDarkTheme();
   updateThemeButtonText(themeSwitchButton, isDark);
 }
 
@@ -39,7 +32,11 @@ function isDarkTheme() {
   return document.body.classList.contains('dark');
 }
 
-function setTheme(button, isDark) {
+function toggleDarkTheme() {
+  return document.body.classList.toggle('dark');
+}
+
+function setTheme(isDark) {
   if (isDark) {
     document.body.classList.add('dark');
   } else {
@@ -58,14 +55,18 @@ function toggleElements(selector) {
   };
 }
 
+function isPrefersDarkTheme() {
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
 class ToggleButton extends HTMLElement {
   connectedCallback() {
     this.classList.add('off');
-    this.createLabel();
+    this.renderLabel();
   }
 
-  createLabel() {
-    const label = document.createElement('div');
+  renderLabel() {
+    const label = document.createElement('span');
     label.classList.add('label');
     label.textContent = this.getAttribute('name');
     this.appendChild(label);
