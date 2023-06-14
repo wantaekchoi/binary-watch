@@ -7,6 +7,7 @@ class TimeUnit extends HTMLElement {
   renderCaption() {
     const caption = document.createElement('div');
     caption.classList.add('caption');
+    caption.classList.add('hidden');
     caption.textContent = this.getAttribute('name');
     this.appendChild(caption);
   }
@@ -25,6 +26,7 @@ class TimeUnit extends HTMLElement {
 
       const label = document.createElement('div');
       label.classList.add('label');
+      label.classList.add('hidden');
       label.textContent = `${1 << (5 - i)}`;
       buttonContainer.appendChild(label);
 

@@ -1,46 +1,57 @@
 body {
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   margin: 0;
-  color: black;
   background-color: whitesmoke;
+  color: black;
 }
 
 body.dark {
-  color: whitesmoke;
   background-color: black;
+  color: whitesmoke;
 }
 
 main {
+  width: 100%;
+  padding: 1em;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
 }
 
 #watch-section {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #button-section {
   display: flex;
+  justify-content: center;
   margin-top: 1em;
+  flex-wrap: wrap;
 }
 
 .caption {
-  font-size: 1em;
-  font-weight: bold;
   margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
   text-transform: uppercase;
 }
 
 .button-container,
 .toggle-button-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .toggle-button-container {
@@ -48,16 +59,15 @@ main {
 }
 
 .toggle-button {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   margin: 5px;
   border-radius: 50%;
   background-color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 5px gray;
   cursor: not-allowed;
   pointer-events: none;
+  box-shadow: 0 0 5px gray;
+  transition: background-color 0.25s ease, box-shadow 0.2s ease;
 }
 
 .toggle-button.on {
@@ -77,11 +87,20 @@ body.dark .toggle-button.off {
 }
 
 .label {
-  font-size: 0.6em;
   text-align: center;
   margin: 0 auto;
+  font-size: 0.8em;
 }
 
 .hidden {
   display: none;
+}
+
+.setting-button {
+  background-color: whitesmoke;
+  border: none;
+  box-shadow: 0 0 5px grey;
+  margin: 10px;
+  min-width: 20px;
+  min-height: 20px;
 }

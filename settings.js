@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', initialize);
 
 function initialize() {
-  const themeSwitchButton = document.getElementById('themeSwitchButton');
-  const toggleCaptionButton = document.getElementById('toggleCaptionButton');
-  const toggleButtonLabel = document.getElementById('toggleButtonLabel');
+  const themeSwitchButton = document.getElementById('theme-switch-button');
+  const toggleCaptionButton = document.getElementById('toggle-caption-button');
+  const toggleButtonLabel = document.getElementById('toggle-button-label');
 
   initializeTheme(themeSwitchButton);
   initializeToggleVisibilityButton('caption', toggleCaptionButton);
@@ -15,25 +15,14 @@ function initialize() {
 function initializeTheme(button) {
   const prefersDarkTheme = isPrefersDarkTheme();
   setTheme(prefersDarkTheme);
-  updateThemeButtonText(button, isDarkTheme());
 }
 
 function toggleTheme() {
-  const themeSwitchButton = document.getElementById('themeSwitchButton');
-  const isDark = toggleDarkTheme();
-  updateThemeButtonText(themeSwitchButton, isDark);
-}
-
-function updateThemeButtonText(button, isDark) {
-  button.textContent = isDark ? '🌞' : '🌛';
+  document.body.classList.toggle('dark');
 }
 
 function isDarkTheme() {
   return document.body.classList.contains('dark');
-}
-
-function toggleDarkTheme() {
-  return document.body.classList.toggle('dark');
 }
 
 function setTheme(isDark) {
