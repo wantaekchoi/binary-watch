@@ -4,41 +4,27 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  color: #1a1a1a;
   background-color: #f2f2f2;
-  font-family: Arial, sans-serif;
 }
 
 body.dark {
+  color: #f2f2f2;
   background-color: #1a1a1a;
-  color: #f2f2f2;
 }
 
-binary-watch {
+main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 60%;
-  height: 80%;
-  background-color: #ebebeb;
-  border-radius: 8px;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  box-sizing: border-box;
+  align-items: end;
 }
 
-body.dark binary-watch {
-  background-color: #333333;
-  color: #f2f2f2;
+#watch-section {
+  align-items: center;
 }
 
-time-unit {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 30px;
+#button-section {
+  margin-top: 1em;
 }
 
 .caption {
@@ -48,51 +34,36 @@ time-unit {
   text-transform: uppercase;
 }
 
-.button-container {
+.button-container,
+.toggle-button-container {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   margin-bottom: 5px;
 }
 
 .toggle-button-container {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
 }
 
 .toggle-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 30px;
   height: 30px;
-  margin-right: 5px;
+  margin: 5px;
   border-radius: 50%;
   background-color: #d3d3d3;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: 0 auto;
 }
 
-.toggle-button.on {
-  background-color: #007bff;
-}
-
-.toggle-button.off {
-  background-color: #d3d3d3;
-}
-
+.toggle-button.on,
 body.dark .toggle-button.on {
   background-color: #007bff;
 }
 
+.toggle-button.off,
 body.dark .toggle-button.off {
-  background-color: #666666;
+  background-color: #d3d3d3;
 }
 
 .label {

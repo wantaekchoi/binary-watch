@@ -1,22 +1,24 @@
 window.addEventListener('DOMContentLoaded', () => {
+  const themeSwitchButton = document.getElementById('themeSwitchButton');
+
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.body.classList.add('dark');
-  }
-});
-
-const themeSwitchButton = document.createElement('button');
-updateThemeButtonText();
-themeSwitchButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  updateThemeButtonText();
-});
-document.body.appendChild(themeSwitchButton);
-
-function updateThemeButtonText() {
-  if (document.body.classList.contains('dark')) {
     themeSwitchButton.textContent = '🌞';
   } else {
     themeSwitchButton.textContent = '🌛';
+  }
+
+  themeSwitchButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    updateThemeButtonText(themeSwitchButton);
+  });
+});
+
+function updateThemeButtonText(button) {
+  if (document.body.classList.contains('dark')) {
+    button.textContent = '🌞';
+  } else {
+    button.textContent = '🌛';
   }
 }
 
