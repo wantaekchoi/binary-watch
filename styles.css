@@ -76,6 +76,7 @@ time-unit {
   background-color: #d3d3d3;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin: 0 auto;
 }
 
 .toggle-button.on {
@@ -97,4 +98,5 @@ body.dark .toggle-button.off {
 .label {
   font-size: 0.75em;
   text-align: center;
+  margin: 0 auto;
 }
