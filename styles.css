@@ -56,6 +56,8 @@ main {
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 0 5px gray;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .toggle-button.on {
