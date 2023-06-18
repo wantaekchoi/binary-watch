@@ -55,47 +55,50 @@ class BinaryWatch extends HTMLElement {
 
   connectedCallback() {
     this.renderTimeUnits();
-    this.hours = this.children[0];
-    this.minutes = this.children[1];
-    this.seconds = this.children[2];
-    this.update();
-
-    setTimeout(() => {
-      this.updateClock();
-    }, 100);
+    this.startUpdatingTimeEverySecond();
   }
 
   renderTimeUnits() {
-    this.timeUnits.forEach(unit => {
-      const timeUnit = document.createElement('time-unit');
-      timeUnit.setAttribute('name', unit);
-      this.appendChild(timeUnit);
-    });
+    this.timeUnits.forEach(unit => this.appendTimeUnitElement(unit));
+    this.assignTimeUnitElements();
   }
 
-  updateClock() {
+  appendTimeUnitElement(unitName) {
+    const timeUnit = document.createElement('time-unit');
+    timeUnit.setAttribute('name', unitName);
+    this.appendChild(timeUnit);
+  }
+
+  assignTimeUnitElements() {
+    this.hours = this.children?.[0];
+    this.minutes = this.children?.[1];
+    this.seconds = this.children?.[2];
+  }
+
+  startUpdatingTimeEverySecond() {
+    setInterval(() => {
+      this.updateTimeUnits();
+    }, 100);
+  }
+
+  updateTimeUnits() {
     const now = new Date();
     const s = now.getSeconds();
 
     if (s !== this.lastUpdatedSecond) {
-      this.update();
+      this.updateAllTimeUnits(now);
       this.lastUpdatedSecond = s;
     }
-
-    setTimeout(() => {
-      this.updateClock();
-    }, 100);
   }
 
-  update() {
-    const now = new Date();
+  updateAllTimeUnits(now) {
     const h = now.getHours();
     const m = now.getMinutes();
     const s = now.getSeconds();
 
-    this.hours.update(h);
-    this.minutes.update(m);
-    this.seconds.update(s);
+    this?.hours?.update(h);
+    this?.minutes?.update(m);
+    this?.seconds?.update(s);
   }
 }
 

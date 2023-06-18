@@ -5,13 +5,20 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
-  background-color: whitesmoke;
-  color: black;
 }
 
-body.dark {
-  background-color: black;
-  color: whitesmoke;
+@media(prefers-color-scheme: light) {
+  body {
+    background-color: whitesmoke;
+    color: black;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: whitesmoke;
+  }
 }
 
 main {
@@ -23,7 +30,8 @@ main {
   align-items: center;
 }
 
-#watch-section {
+#watch-section,
+#button-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,17 +39,25 @@ main {
 }
 
 #button-section {
-  display: flex;
-  justify-content: center;
   margin-top: 1em;
-  flex-wrap: wrap;
 }
 
-.caption {
-  margin-bottom: 10px;
-  font-size: 1.2em;
+.caption,
+.label {
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.label {
+  text-align: center;
+  font-size: 0.8em;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
 }
 
 .button-container,
@@ -74,33 +90,21 @@ main {
   box-shadow: 0 0 20px cyan;
 }
 
-body.dark .toggle-button.on {
-  background-color: white;
-}
-
 .toggle-button.off {
   background-color: inherit;
 }
 
-body.dark .toggle-button.off {
-  background-color: inherit;
-}
-
-.label {
-  text-align: center;
-  margin: 0 auto;
-  font-size: 0.8em;
-}
-
-.hidden {
-  display: none;
+@media (prefers-color-scheme: dark) {
+  .toggle-button.on {
+    background-color: white;
+  }
 }
 
 .setting-button {
-  background-color: whitesmoke;
+  background: none;
   border: none;
-  box-shadow: 0 0 5px grey;
   margin: 10px;
   min-width: 20px;
   min-height: 20px;
+  text-shadow: 0 0 20px gray;
 }

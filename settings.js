@@ -1,51 +1,20 @@
-document.addEventListener('DOMContentLoaded', initialize);
+document.addEventListener('DOMContentLoaded', initializePage);
 
-function initialize() {
-  const themeSwitchButton = document.getElementById('theme-switch-button');
-  const toggleCaptionButton = document.getElementById('toggle-caption-button');
-  const toggleButtonLabel = document.getElementById('toggle-button-label');
-
-  initializeTheme(themeSwitchButton);
-  initializeToggleVisibilityButton('caption', toggleCaptionButton);
-  initializeToggleVisibilityButton('label', toggleButtonLabel);
-
-  themeSwitchButton.addEventListener('click', toggleTheme);
+function initializePage() {
+  const toggleLabelButton = document.getElementById('toggle-button');
+  initializeToggleButton(toggleLabelButton);
 }
 
-function initializeTheme(button) {
-  const prefersDarkTheme = isPrefersDarkTheme();
-  setTheme(prefersDarkTheme);
+function initializeToggleButton(button) {
+  button.addEventListener('click', toggleClassForElements.bind(null, ['caption', 'label'], 'hidden'));
 }
 
-function toggleTheme() {
-  document.body.classList.toggle('dark');
-}
+function toggleClassForElements(classNames, toggleClassName) {
+  const elements = classNames.reduce((accumulator, className) => {
+    return accumulator.concat(Array.from(document.querySelectorAll(`.${className}`)));
+  }, []);
 
-function isDarkTheme() {
-  return document.body.classList.contains('dark');
-}
-
-function setTheme(isDark) {
-  if (isDark) {
-    document.body.classList.add('dark');
-  } else {
-    document.body.classList.remove('dark');
-  }
-}
-
-function initializeToggleVisibilityButton(className, button) {
-  button.addEventListener('click', toggleElements(`.${className}`));
-}
-
-function toggleElements(selector) {
-  return function () {
-    const elements = document.querySelectorAll(selector);
-    elements.forEach(element => element.classList.toggle('hidden'));
-  };
-}
-
-function isPrefersDarkTheme() {
-  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  elements.forEach(element => element.classList.toggle(toggleClassName));
 }
 
 class ToggleButton extends HTMLElement {
